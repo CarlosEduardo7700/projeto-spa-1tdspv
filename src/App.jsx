@@ -1,5 +1,7 @@
 import reactLogo from "./assets/react.svg"
 import Cabecalho from "./components/Cabecalho";
+import Conteudo from "./components/Conteudo";
+import Rodape from "./components/Rodape";
 
 export default function App() {
 
@@ -10,25 +12,9 @@ export default function App() {
       <div>
         <Cabecalho/>
 
-        <section>
-          <div>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate, blanditiis eius animi autem dolorum alias.</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate, blanditiis eius animi autem dolorum alias.</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate, blanditiis eius animi autem dolorum alias.</p>
-          
-            <img src={reactLogo} alt={reactLogoTextoAlt} />
-          </div>
-        </section>
+        <Conteudo reactLogoProps={reactLogo} reactLogoTextoAltProps={reactLogoTextoAlt}/>
         
-        <footer>
-          <div>
-            <ul>
-              <li><a href="#">GitHUb</a></li>
-              <li><a href="#">X</a></li>
-              <li><a href="#">Twiter</a></li>
-            </ul>
-          </div>
-        </footer>
+        <Rodape/>
       </div>
     </>
   )
