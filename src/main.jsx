@@ -16,7 +16,7 @@ const hauter = createBrowserRouter([
     {path: "/", element: <Home/>},
     {path: "/produtos", element: <Produtos/>},
     {path: "/editar/produtos/:id", element: <EditarProduto/>},
-    {path: "/excluir/produtos/:id", element: <ExcluirProduto/>},
+    {path: "/excluir/produtos/:id", element: <ExcluirProdutos/>},
   ]
   }
 ])
