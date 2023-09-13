@@ -1,7 +1,7 @@
 import { ListaProdutos } from "../components/listaProdutos";
 import { Link } from "react-router-dom";
 import classes from "./Produtos.module.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function Produtos() {
   document.title = "LISTA DE PRODUTOS";
@@ -10,9 +10,16 @@ export default function Produtos() {
     console.log("Use-Effect que será sempre renderizado!")
   });
 
+  const [exemplo, setExemplo] = useState(0)
+
   return (
     <main>
       <h1>Lista de Produtos</h1>
+
+    <div>
+        <button onClick={() => setExemplo(exemplo + 1)}>CLICK - {exemplo}</button>
+    </div>
+
       <div>
         <table className={classes.tableStyle}>
           <thead>
