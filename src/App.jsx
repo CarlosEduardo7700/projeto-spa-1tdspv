@@ -13,11 +13,8 @@ export default function App() {
     <>
       <div>
         <Cabecalho/>
-
-        <Conteudo reactLogoProps={reactLogo} reactLogoTextoAltProps={reactLogoTextoAlt}/>
-        
+        {/* <Conteudo reactLogoProps={reactLogo} reactLogoTextoAltProps={reactLogoTextoAlt}/> */}
         <Outlet/>
-
         <Rodape/>
       </div>
     </>

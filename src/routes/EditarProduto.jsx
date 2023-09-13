@@ -21,7 +21,7 @@ export default function EditarProduto(){
             <p>Objeto selecionado : {produtoRetornadoFilter[0].nome}</p>
             <button onClick={()=> setProduto("Algo novo")}>MUDAR O STATE</button>
             <div>
-                <form></form>
+                <form>
                     <fieldset>
                         <legend>Produto selecionado</legend>
                         <input type="hidden" name="id" defaultValue={produtoRetornadoFilter[0].id}/>
