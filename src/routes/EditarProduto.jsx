@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { ListaProdutos } from "../components/listaProdutos";
 import { useState } from "react";
 
@@ -9,37 +9,68 @@ export default function EditarProduto(){
 
     document.title = "EDITAR PRODUTOS " + id
 
-    const produtoRetornadoFilter = ListaProdutos.filter(produto => produto.id == id)
+    const navigate = useNavigate()
 
-    const [produto, setProduto] = useState("NOME");
+    const produtoRetornadoFilter = ListaProdutos.filter(produto => produto.id == id)[0]
 
+    const [produto, setProduto] = useState({
+        id: produtoRetornadoFilter.id,
+        nome: produtoRetornadoFilter.nome,
+        desc: produtoRetornadoFilter.desc,
+        preco: produtoRetornadoFilter.preco
+    });
+
+    const handleChange = (event) => {
+        const {name, value} = event.target;
+        setProduto({...produto, [name]:value});
+    }
+
+    const handleSubit = (event) => {
+        event.preventDefault();
+
+        let indice;
+
+        ListaProdutos.forEach((item, index) => {
+            if (item.id == id) {
+                indice = index;
+            }
+        });
+
+        ListaProdutos.splice(indice, 1, produto);
+        navigate("/src/routes/Produtos.jsx")
+    }
 
     return(
         <div>
             <h1>Editando o produto</h1>
 
-            <p>Objeto selecionado : {produtoRetornadoFilter[0].nome}</p>
-            <button onClick={()=> setProduto("Algo novo")}>MUDAR O STATE</button>
             <div>
-                <form>
+                <form onSubmit={handleSubit}>
                     <fieldset>
                         <legend>Produto selecionado</legend>
-                        <input type="hidden" name="id" defaultValue={produtoRetornadoFilter[0].id}/>
+                        <input type="hidden" name="id" value={produto.id}/>
                         <div>
                             <label htmlFor="idProd">Nome do Produto</label>
-                            <input type="text" name="nome" id="idProd" defaultValue={produtoRetornadoFilter[0].nome}/>
+                            <input type="text" name="nome" id="idProd" onChange={handleChange} value={produto.nome}/>
                         </div>
                         <div>
                             <label htmlFor="idDesc">Descrição</label>
-                            <input type="text" name="desc" id="idDesc" defaultValue={produtoRetornadoFilter[0].desc}/>
+                            <input type="text" name="desc" id="idDesc" onChange={handleChange} value={produto.desc}/>
                         </div>
                         <div>
                             <label htmlFor="idPreco">Preço</label>
-                            <input type="text" name="preco" id="idPreco" defaultValue={produtoRetornadoFilter[0].preco}/>
+                            <input type="text" name="preco" id="idPreco" onChange={handleChange} value={produto.preco}/>
                         </div>
                     </fieldset>
                 </form>
             </div>
+
+            <div>
+                <p>Nome: {produto.nome}</p>
+                <p>Descrição: {produto.desc}</p>
+                <p>Preço: {produto.preco}</p>
+            </div>
+
         </div>
     )
 }

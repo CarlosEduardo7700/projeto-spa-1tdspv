@@ -1,9 +1,14 @@
 import { ListaProdutos } from "../components/listaProdutos";
 import { Link } from "react-router-dom";
 import classes from "./Produtos.module.css";
+import { useEffect } from "react";
 
 export default function Produtos() {
   document.title = "LISTA DE PRODUTOS";
+
+  useEffect(()=>{
+    console.log("Use-Effect que será sempre renderizado!")
+  });
 
   return (
     <main>
