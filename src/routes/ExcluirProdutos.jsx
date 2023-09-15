@@ -1,5 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom"
 import { ListaProdutos } from "../components/ListaProdutos"
+import style from './ExcluiProdutos.module.css'
 
 export default function ExcluirProdutos(){
 
@@ -21,12 +22,12 @@ export default function ExcluirProdutos(){
    }
 
    return (
-      <>
+      <div className={style.containerExcluir}>
          <h1>Excluir Podutos</h1>
          <div>
-            <section>
+            <section className={style.cardExcluir}>
                <h2>Produto selecionado para exclusão</h2>
-               <h3>Você tem certeza de que deseja excluir esse produto?</h3>
+               <h3 className={style.alertMsg}>Você tem certeza de que deseja excluir esse produto?</h3>
                <figure>
                   <img src={produto.img} alt={produto.desc} />
                   <figcaption>
@@ -37,6 +38,6 @@ export default function ExcluirProdutos(){
                <button onClick={() => navigate("/produtos")}>Cancelar</button>
             </section>
          </div>
-      </>
+      </div>
    )
 }

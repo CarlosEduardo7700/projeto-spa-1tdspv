@@ -1,0 +1,42 @@
+.containerExcluir {
+
+    .cardExcluir {
+        display: flex;
+        align-items: center;
+
+        .alertMsg {
+            background-color: rgb(255, 119, 119);
+            color: rgb(109, 9, 9);
+            border: rgb(109, 9, 9) solid 2px;
+            padding: 12px 24px;
+            border-radius: 5px;
+        }
+
+        & h1 {
+            text-align: center;
+            background-color: #e1e1e1;
+        }
+        
+        & h2 {
+            text-align: center;
+            background-color: #e1e1e1;
+        }
+
+        & figure {
+            border: 3px solid #21deff;
+
+            & img {
+                display: block;
+                margin: 0 auto;
+                width: 100%;
+            }
+
+            & figcaption {
+                background-color: rgba(0, 0, 0, 0.7);
+            }
+        }
+
+    }
+
+    
+}
