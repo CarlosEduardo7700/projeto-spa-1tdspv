@@ -19,6 +19,7 @@ export default function EditarProduto(){
         nome: produtoRetornadoFilter.nome,
         desc: produtoRetornadoFilter.desc,
         preco: produtoRetornadoFilter.preco,
+        img: produtoRetornadoFilter.img,
     })
 
     const handleChange = (event) => {
