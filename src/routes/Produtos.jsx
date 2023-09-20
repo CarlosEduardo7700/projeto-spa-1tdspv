@@ -7,35 +7,32 @@ import { useEffect, useState } from "react";
 export default function Produtos() {
   document.title = "LISTA DE PRODUTOS"
 
+  const [listaProdutoLocal, setListaProdutoLocal] = useState([{}])
 
-  const [exemplo, setExemplo] = useState([{}])
+  useEffect(() => {
+    fetch('http://localhost:5000/produtos', {
 
-  const [count, setCount] = useState(0)
-
-  useEffect(()=>{
-    console.log("Use-Effect que será sempre renderizado!")
-  })
-
-  useEffect(()=>{
-    console.log("Use-Effect que será renderizado apenas uma vez!")
-
-    setExemplo(ListaProdutos)
+      method: 'GET', 
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then((response) => response.json())
+    .then ((data)=>{
+        setListaProdutoLocal(data)
+    })
+    .catch((err) => console.log(err))
 
   }, [])
 
-  useEffect(()=>{
-    console.log("Use-Effect que será renderizado o objeto ou elemento ou componente que está no arry de dependinecias sofrer atualização!")
-  }, [count])
 
 
   return (
     <div>
       <h1>Lista de Produtos</h1>
 
-
-      <div>
+      {/* <div>
         <button onClick={() => setCount(count + 1)}>CLICK - {count}</button>
-      </div>
+      </div> */}
 
       <div>
         <table className={classes.tableStyle}>
@@ -50,7 +47,7 @@ export default function Produtos() {
             </tr>
           </thead>
           <tbody>
-              {exemplo.map( (produto, index) => (
+              {listaProdutoLocal.map( (produto, index) => (
                 <tr key={index} className={classes.tableLineStyle}>
                   <td className={classes.tableDataStyle}>{produto.id}</td>
                   <td className={classes.tableDataStyle}>{produto.nome}</td>
@@ -74,3 +71,22 @@ export default function Produtos() {
     </div>
   );
 }
+
+// useEffect(()=>{
+//   console.log("Use-Effect que será renderizado apenas uma vez!")
+
+//   setExemplo(ListaProdutos)
+
+// }, [])
+
+// useEffect(()=>{
+//   console.log("Use-Effect que será renderizado o objeto ou elemento ou componente que está no arry de dependinecias sofrer atualização!")
+// }, [count])
+
+// const [exemplo, setExemplo] = useState([{}])
+
+// const [count, setCount] = useState(0)
+
+// useEffect(()=>{
+//   console.log("Use-Effect que será sempre renderizado!")
+// })
