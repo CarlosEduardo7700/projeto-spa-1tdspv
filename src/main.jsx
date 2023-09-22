@@ -8,6 +8,7 @@ import Produtos from './routes/Produtos.jsx';
 import EditarProduto from './routes/EditarProduto.jsx';
 import Error from './routes/Error.jsx';
 import ExcluirProdutos from './routes/ExcluirProdutos.jsx';
+import InserirProduto from './routes/InserirProduto.jsx';
 
 const router = createBrowserRouter([
   {path:"/", element: <App/>, errorElement: <Error/>,
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
       {path: "/produtos", element: <Produtos/>},
       {path: "/editar/produtos/:id", element: <EditarProduto/>},
       {path: "/excluir/produtos/:id", element: <ExcluirProdutos/>},
+      {path: "/cadastrar/produto", element: <InserirProduto/>},
   ]}
 ])
 
