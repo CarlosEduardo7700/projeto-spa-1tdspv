@@ -5,6 +5,7 @@ export default function Home(){
     return(
         <div>
             <h1>COMPONENTES - HOME</h1>
+            <img src="/produtos.jpg" alt="Produto imagem" />
         </div>
     )
 }

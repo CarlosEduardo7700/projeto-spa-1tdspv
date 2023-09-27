@@ -21,11 +21,11 @@ export default function InserirProduto() {
         .then((data) => {
             setListaLocal(data)
         })
-        .catch (error => console.log(error))
-
-        novoId = (listaLocal[listaLocal.length - 1].id + 1) 
+        .catch (error => console.log(error)) 
 
     }, [])
+
+    novoId = (listaLocal[listaLocal.length - 1].id + 1)
 
     const [produto, setProduto] = useState({
         id: novoId,

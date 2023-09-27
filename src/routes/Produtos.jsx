@@ -1,8 +1,8 @@
-import { ListaProdutos } from "../components/ListaProdutos";
 import { Link } from "react-router-dom";
 import { AiOutlineDelete as Excluir, AiOutlineEdit as Editar } from 'react-icons/ai'
 import classes from "./Produtos.module.css";
 import { useEffect, useState } from "react";
+import ModalInserir from "../components/ModalInserir";
 
 export default function Produtos() {
   document.title = "LISTA DE PRODUTOS"
@@ -24,15 +24,16 @@ export default function Produtos() {
 
   }, [])
 
-
+  const [open, setOpen] = useState(false)
 
   return (
     <div>
       <h1>Lista de Produtos</h1>
+      
+      {open ? <ModalInserir open={open} setOpen={setOpen}/> : ""}
 
-      {/* <div>
-        <button onClick={() => setCount(count + 1)}>CLICK - {count}</button>
-      </div> */}
+      <button onClick={() => setOpen(true)}>OPEN-MODAL</button>
+
 
       <div>
         <table className={classes.tableStyle}>
@@ -63,7 +64,7 @@ export default function Produtos() {
             </tbody>
             <tfoot>
               <tr>
-                <td colSpan="4" className={classes.tableDataStyle}>Total de Produtos: {ListaProdutos.length}</td>
+                <td colSpan="4" className={classes.tableDataStyle}>Total de Produtos: {listaProdutoLocal.length}</td>
               </tr>
             </tfoot>
           </table>
