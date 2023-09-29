@@ -3,6 +3,7 @@ import { AiOutlineDelete as Excluir, AiOutlineEdit as Editar } from 'react-icons
 import classes from "./Produtos.module.css";
 import { useEffect, useState } from "react";
 import ModalInserir from "../components/ModalInserir";
+import "./Produtos.scss"
 
 export default function Produtos() {
   document.title = "LISTA DE PRODUTOS"
@@ -32,19 +33,19 @@ export default function Produtos() {
       
       {open ? <ModalInserir open={open} setOpen={setOpen}/> : ""}
 
-      <button onClick={() => setOpen(true)}>OPEN-MODAL</button>
+      <Link onClick={() => setOpen(true)}>Cadastrar Produto</Link>
 
 
       <div>
-        <table className={classes.tableStyle}>
+        <table className="tableStyle">
           <thead>
-            <tr className={classes.tableStyle.tableHeaderStyle}>
-              <th className={classes.tableHeaderStyle}>ID</th>
-              <th className={classes.tableHeaderStyle}>NOME</th>
-              <th className={classes.tableHeaderStyle}>DESCRIÇÃO</th>
-              <th className={classes.tableHeaderStyle}>PREÇO</th>
-              <th className={classes.tableHeaderStyle}>Imagem</th>
-              <th className={classes.tableHeaderStyle}>Editar/Excluir</th>
+            <tr>
+              <th>ID</th>
+              <th>NOME</th>
+              <th>DESCRIÇÃO</th>
+              <th>PREÇO</th>
+              <th>Imagem</th>
+              <th>Editar/Excluir</th>
             </tr>
           </thead>
           <tbody>

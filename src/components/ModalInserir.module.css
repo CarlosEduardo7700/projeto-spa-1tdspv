@@ -12,33 +12,71 @@
     }
 
     & form{
-        display: flex;
-        flex-direction: column;
         font-size: 2rem;
-        margin: 5% 20%;
+        margin: 2% auto;
+        width: 80%;
 
-        & input{
-            font-size: 1.5rem;
-            width: 100%;
-            height: 40px;
-            border-radius: 15px;
-            outline: none;
-            border: 0 solid #ccc;
-            padding: 0 10px;
+        & span {
+            float: right;
+            background-color: #fff;
+            color: black;
+            border-radius: 50%;
+            border: solid 2px black;
+            width: 3.8%;
+            text-align: center;
+            font-weight: bold;
+
+            &:hover {
+                background-color: black;
+                color: white;
+                border-color: white;
+            }
         }
 
-        & button {
-            display: block;
-            background-color: rgb(9, 129, 9);
-            border: 0 solid #ccc;
-            height: 40px;
-            width: 40%;
-            
-            color: #fff;
-            font-size: 1.5rem;
-            font-weight: bold;
-            border-radius: 5px;
-            margin: 5% auto;
+        & div {
+            clear: right;
+        
+            & label{
+                display: block;
+                margin: 0 auto;
+                width: 82%;
+            }
+
+            & input{
+                font-size: 1.5rem;
+                display: block;
+                width: 80%;
+                height: 50px;
+                border-radius: 15px;
+                outline: none;
+                border: 0 solid #ccc;
+                padding: 0 10px;
+                margin: 0 auto 1% auto;
+            }
+
+
+
+            & button {
+                display: block;
+                background-color: rgb(9, 129, 9);
+                border: 0 solid #ccc;
+                height: 50px;
+                width: 40%;
+                
+                color: #fff;
+                font-size: 1.5rem;
+                font-weight: bold;
+                border-radius: 5px;
+                margin: 2.5% auto;
+                transition: background-color 300ms;
+
+                &:hover {
+                    background-color: rgb(96, 196, 96);
+                }
+                &:active{
+                    background-color:rgb(18, 92, 18)
+                }
+            }
         }
     }
 }

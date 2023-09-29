@@ -35,39 +35,40 @@ export default function ModalInserir(props) {
         img: "",
     })
 
+    const handleChange = (event) => {
+        const {name, value} = event.target
+        setProduto({...produto, [name]:value})
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+        fetch("http://localhost:5000/produtos", {
+            method: "POST",
+            body: JSON.stringify(produto),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then((response) => response.json())
+        .then((data) => (console.log(data)))
+        .catch(error => console.log(error))
+
+        props.setOpen(false);
+    }
+
     if (props.open){
-
-        const handleChange = (event) => {
-            const {name, value} = event.target
-            setProduto({...produto, [name]:value})
-        }
-
-        const handleSubmit = (e) => {
-            e.preventDefault()
-    
-            fetch("http://localhost:5000/produtos", {
-                method: "POST",
-                body: JSON.stringify(produto),
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            })
-            .then((response) => response.json())
-            .then((data) => (console.log(data)))
-            .catch(error => console.log(error))
-    
-            navigate("/produtos")
-        }
 
         return (
         
             <div className={styles.container}>
-
-                <button onClick={() => props.setOpen(false)}>CLOSE-MODAL</button>
                 
                 <form onSubmit={handleSubmit}>
                     <fieldset>
                         <legend>Cadastrar Produto</legend>
+
+                        <span onClick={() => props.setOpen(false)}>X</span>
+
                         <div>
                             <label htmlFor="idProd">Nome do Produto</label>
                             <input 
