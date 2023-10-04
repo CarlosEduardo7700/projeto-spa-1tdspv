@@ -1,0 +1,36 @@
+.rodape{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #b4b4b4;
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    ul {
+        width: 80%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        list-style: none;
+
+        margin: 1em 1em;
+        padding: 0;
+
+        li a {
+            text-decoration: none;
+            color: black;
+            font-size: 5em;
+
+            transition: .5s;
+
+            &:hover {
+                color: rgb(14, 64, 121);
+            }
+
+        }
+    }
+    
+}
