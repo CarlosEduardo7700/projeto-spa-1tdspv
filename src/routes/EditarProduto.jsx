@@ -1,44 +1,58 @@
 import { useNavigate, useParams } from "react-router-dom"
-import { ListaProdutos } from "../components/ListaProdutos"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 export default function EditarProduto(){
-
     const { id } = useParams()
-
-    document.title = "EDITAR PRODUTOS " + id
-
     const navigate = useNavigate()
 
-    const produtoRetornadoFilter = ListaProdutos.filter(
-        (produto) => produto.id == id
-    )[0]
-
+    document.title = "EDITAR PRODUTOS " + id
+    
     const [produto, setProduto] = useState({
-        id: produtoRetornadoFilter.id,
-        nome: produtoRetornadoFilter.nome,
-        desc: produtoRetornadoFilter.desc,
-        preco: produtoRetornadoFilter.preco,
-        img: produtoRetornadoFilter.img,
+        id: "",
+        nome: "",
+        desc: "",
+        preco: "",
+        img: ""
     })
+
+    useEffect( async () => {
+        await fetch(`http://localhost:5000/produtos/${id}`, {
+            method: "GET",
+            headers:{
+                "Content-Type" : "application/json",
+            }
+        })
+        .then((response)=> response.json())
+        .then((data) => {
+            setProduto({
+                id: data.id,
+                nome: data.nome,
+                desc: data.desc,
+                preco: data.preco,
+                img: data.img
+            })
+        })
+        .catch (error => console.log(error)) 
+
+    }, [id])
 
     const handleChange = (event) => {
         const {name, value} = event.target
         setProduto({...produto, [name]:value})
     }
 
-    const handleSubit = (event) => {
+    const handleSubit = async (event) => {
         event.preventDefault()
 
-        let indice
-
-        ListaProdutos.forEach((item, index) => {
-            if (item.id == id) {
-                indice = index;
+        await fetch(`http://localhost:5000/produtos/${id}`, {
+            method:"PUT",
+            body: JSON.stringify(produto),
+            headers: {
+                "Content-Type" : "application/json",
             }
         })
+        .catch (error => console.log(error))  
 
-        ListaProdutos.splice(indice, 1, produto)
         navigate("/produtos")
     }
 
